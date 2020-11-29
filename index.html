@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Final-ToDoList</title>
 </head>
 <body>
+    <div class="wrap">
+        <header class="header">
+            <h1 class="header__title">Список задач</h1>
+        </header>
+        <nav class="tabs">
+            <button class="btn tab active">Текущие задачи</button>
+            <button class="btn tab">Выполненные задачи </button>
+            <button class="btn tab">Удаленные задачи</button>
+        </nav>
+        <main class="main">
+            <table class="table">
+    
+            </table>
+            <button class="btn add-task">Добавить задачу</button>
+        </main>
+        <div class="modal">
+            <div class="popap">
+                <div class="popap-head">
+                    <div class="close">X</div>
+                </div>
+                <div class="popap-main">
+                    <form class="popap-form">
+                        <label>
+                            <span>Название задачи</span>
+                            <input type="text" name="task-name">
+                        </label>
+                        <label>
+                            <span>Описание задачи</span>
+                            <input type="text" name="task-description">
+                        </label>
+                        <label>
+                            <span>Приоритет</span>
+                            <input type="text" name="priority">
+                        </label>
+                    </form>
+                    <div class="popap-btn">
+                        <div class="btn ok">Добавить</div>
+                        <div class="btn close">Закрыть</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="/scripts/main.js"></script>
 </body>
 </html>
