@@ -58,6 +58,7 @@ a {
     background: rgba(0, 0, 0, .3);
     cursor: pointer;
 }
+
 .modal.open{
     display: block;
 }

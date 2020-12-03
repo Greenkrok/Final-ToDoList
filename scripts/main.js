@@ -26,3 +26,9 @@
 //         1) Для «текущие задачи» - редактировать, выполнено и удалить;
 //         2) Для «выполненные задачи» - редактировать и удалить; 
 //         3) Для «удаленные задачи» - восстановить.
+
+import {showModal} from "./showModal.js";
+import {closeModal} from "./closeModal.js";
+
+showModal();
+closeModal();
