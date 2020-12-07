@@ -29,6 +29,8 @@
 
 import {showModal} from "./showModal.js";
 import {closeModal} from "./closeModal.js";
+import {addTask} from "./addTask.js";
 
 showModal();
 closeModal();
+addTask();

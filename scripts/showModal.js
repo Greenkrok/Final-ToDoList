@@ -3,5 +3,5 @@ export function showModal() {
     let $modal = document.querySelector('.modal');
     $addTask.addEventListener('click', function() {
         $modal.classList.add('open');
-})
-}
+});
+};

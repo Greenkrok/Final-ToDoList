@@ -8,15 +8,15 @@ export function closeModal() {
         $inputs.forEach(function(input) {
             input.value = '';
           });
-    }
+    };
 
     $close.addEventListener('click', function() {
         $modal.classList.remove('open');
-        resetInputs()
+        resetInputs();
     });
 
     $btnClose.addEventListener('click', function() {
         $modal.classList.remove('open');
-        resetInputs()
+        resetInputs();
     });
-}
+};

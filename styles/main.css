@@ -28,6 +28,11 @@ a {
     flex-wrap: wrap;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
 .btn {
     margin: 0.5em;
     padding: 10px;
@@ -46,9 +51,24 @@ a {
     cursor: default;
 }
 
-.table {
-    width: 100%;
-}    
+img {
+    cursor: pointer;
+}
+
+.list {
+    border: 1px solid;
+}
+
+.list__task {
+    display: block;
+    margin: 1em;
+    border-bottom: 1px solid;
+}
+
+.list__item {
+    display: inline-block;
+    width: 30vw;
+}
 
 .modal {
     display: none;
