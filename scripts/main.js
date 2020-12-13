@@ -27,10 +27,74 @@
 //         2) Для «выполненные задачи» - редактировать и удалить; 
 //         3) Для «удаленные задачи» - восстановить.
 
-import {showModal} from "./showModal.js";
-import {closeModal} from "./closeModal.js";
-import {addTask} from "./addTask.js";
 
-showModal();
-closeModal();
-addTask();
+
+let mass = []
+const $modal = document.querySelector('.modal')
+const $btnAddTask = document.querySelector('.add-task')
+const $close = document.querySelector('.close')
+const $btnClose = document.querySelector('.btn.close')
+const $btnOk = document.querySelector('.btn.ok')
+
+
+
+// showModal
+function showModal() {
+    $modal.classList.add('open')
+}
+
+
+
+// closeModal
+const $inputs = document.querySelectorAll('input')
+
+function closeModal() {
+    $modal.classList.remove('open')
+    function resetInputs() {        
+        $inputs.forEach(function(input) {
+            input.value = ''
+          })
+    }
+    resetInputs()
+}
+
+
+
+// addTask
+function addTask() {
+    let $inputTaskName = document.querySelector('.task-name')
+    let $inputTaskDescription = document.querySelector('.task-description')
+    let $inputPriority = document.querySelector('.priority')
+
+    mass.push($inputTaskName.value)
+    localStorage.setItem('list-itm', JSON.stringify(mass))
+    $inputTaskName.value = ''
+    getList(mass)
+
+    if(localStorage.getItem('list-itm')) {
+        let ls = localStorage.getItem('list-itm')
+
+        mass = JSON.parse(ls);
+        getList(mass)
+    }
+
+    function getList(list) {
+        let $list = document.querySelector('.list')
+
+        $list.innerHTML = list.reduce((html, item) => {
+            return (html += `<li class="list__task">
+                                <input type="checkbox">
+                                <p class="list__item">${item}</p>
+                                <img src="./img/edit.png" class="edit">
+                                <img src="./img/delete.png" class="delete">
+                            </li>`)
+        }, $list.innerHTML = '')
+    }
+}
+
+
+$btnAddTask.addEventListener('click', showModal)
+$close.addEventListener('click', closeModal)
+$btnClose.addEventListener('click', closeModal)
+$btnOk.addEventListener('click', addTask)
+// $btnEdit.addEventListener('click', showModal)

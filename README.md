@@ -1,4 +1,4 @@
 # Final-ToDoList
-https://greenkrok.github.io/Final-ToDoList/
+Open on a localhost
 
 Курсовая работа для курса JavaScript basic
