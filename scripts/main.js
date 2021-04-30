@@ -24,77 +24,82 @@
 //     - Список задач должен формироваться в виде таблицы, каждая строка которой, представляет собой одну задачу. 
 //     У каждой задачи должны быть элементы управления, в зависимости от выбранной вкладки:
 //         1) Для «текущие задачи» - редактировать, выполнено и удалить;
-//         2) Для «выполненные задачи» - редактировать и удалить; 
+//         2) Для «выполненные задачи» - восстановить и удалить; 
 //         3) Для «удаленные задачи» - восстановить.
 
-
-
-let mass = []
-const $modal = document.querySelector('.modal')
-const $btnAddTask = document.querySelector('.add-task')
-const $close = document.querySelector('.close')
-const $btnClose = document.querySelector('.btn.close')
-const $btnOk = document.querySelector('.btn.ok')
-
-
+let todoLists = [];
+let currentTasks = [];
+let completedTasks = [];
+let remoteTasks = [];
+const $modal = document.querySelector('.modal');
+const $btnAddTask = document.querySelector('.add-task');
+const $cross = document.querySelector('.cross');
+const $btnClose = document.querySelector('.btn.close');
+const $btnOk = document.querySelector('.btn.ok');
 
 // showModal
 function showModal() {
-    $modal.classList.add('open')
-}
+    $modal.classList.add('open');
+};
 
-
+$btnAddTask.addEventListener('click', showModal);
 
 // closeModal
-const $inputs = document.querySelectorAll('input')
+const $inputs = document.querySelectorAll('input');
 
 function closeModal() {
-    $modal.classList.remove('open')
+    $modal.classList.remove('open');
     function resetInputs() {        
         $inputs.forEach(function(input) {
-            input.value = ''
-          })
-    }
-    resetInputs()
-}
+            input.value = '';
+          });
+    };
+    resetInputs();
+};
 
-
+$cross.addEventListener('click', closeModal);
+$btnClose.addEventListener('click', closeModal);
 
 // addTask
 function addTask() {
-    let $inputTaskName = document.querySelector('.task-name')
-    let $inputTaskDescription = document.querySelector('.task-description')
-    let $inputPriority = document.querySelector('.priority')
+    let $inputTaskName = document.querySelector('.task-name');
+    let $inputTaskDescription = document.querySelector('.task-description');
+    let $selectPriority = document.querySelector('.priority');
 
-    mass.push($inputTaskName.value)
-    localStorage.setItem('list-itm', JSON.stringify(mass))
-    $inputTaskName.value = ''
-    getList(mass)
+    if(!$inputTaskName.value) {
+        return        
+    };
+
+    currentTasks.push($inputTaskName.value);
+    localStorage.setItem('list-itm', JSON.stringify(currentTasks));
+    $inputTaskName.value = '';
+    $inputTaskDescription.value = '';
+    $selectPriority.value = '1';
+    getList(currentTasks);
 
     if(localStorage.getItem('list-itm')) {
-        let ls = localStorage.getItem('list-itm')
+        let ls = localStorage.getItem('list-itm');
 
-        mass = JSON.parse(ls);
-        getList(mass)
-    }
+        currentTasks = JSON.parse(ls);
+        getList(currentTasks);
+    };
 
     function getList(list) {
-        let $list = document.querySelector('.list')
+        let $list = document.querySelector('.list');
 
         $list.innerHTML = list.reduce((html, item) => {
-            return (html += `<li class="list__task">
-                                <input type="checkbox">
-                                <p class="list__item">${item}</p>
-                                <img src="./img/edit.png" class="edit">
-                                <img src="./img/delete.png" class="delete">
-                            </li>`)
+            return (html +=
+                `
+                    <li class="list__task">
+                        <input type="checkbox">
+                        <p class="list__item">${item}</p>
+                        <img src="./img/edit.png" class="edit">
+                        <img src="./img/delete.png" class="delete">
+                    </li>
+                `)
         }, $list.innerHTML = '')
-    }
-}
+    };
+};
 
-
-$btnAddTask.addEventListener('click', showModal)
-$close.addEventListener('click', closeModal)
-$btnClose.addEventListener('click', closeModal)
 $btnOk.addEventListener('click', addTask)
 // $btnEdit.addEventListener('click', showModal)

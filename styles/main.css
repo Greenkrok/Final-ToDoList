@@ -103,7 +103,7 @@ img {
     height: 25px;
 }
 
-.popap-head .close {
+.popap-head .cross {
     position: absolute;
     height: 20px;
     padding: 0 2px;
@@ -115,7 +115,7 @@ img {
     cursor: pointer;
 }
 
-.popap-head .close:hover {
+.popap-head .cross:hover {
     border-color: #333;
 }
 
@@ -141,6 +141,22 @@ img {
     width: 100%;
     margin: 0;
     padding: 0;
+}
+
+.task-name::-webkit-input-placeholder {
+    color:#c0392b;
+}
+
+.task-name::-moz-placeholder {
+    color:#c0392b;
+}
+
+.task-name:-moz-placeholder {
+    color:#c0392b;
+}
+
+.task-name:-ms-input-placeholder {
+    color:#c0392b;
 }
 
 .popap-btn {

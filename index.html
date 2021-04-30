@@ -25,21 +25,25 @@
         <div class="modal">
             <div class="popap">
                 <div class="popap-head">
-                    <div class="close">X</div>
+                    <div class="cross">X</div>
                 </div>
                 <div class="popap-main">
                     <form class="popap-form">
                         <label>
                             <span>Название задачи</span>
-                            <input class="task-name" type="text" name="task-name">
+                            <input class="task-name" type="text" name="task-name" placeholder="Обязательно">
                         </label>
                         <label>
                             <span>Описание задачи</span>
-                            <input class="task-description" type="text" name="task-description">
+                            <input class="task-description" type="text" name="task-description" placeholder="Необязательно">
                         </label>
                         <label>
                             <span>Приоритет</span>
-                            <input class="priority" type="text" name="priority">
+                            <select class="priority">
+                                <option value="1">Бессрочное</option>
+                                <option value="2">Триальное</option>
+                                <option value="3">Срочное</option>
+                              </select>
                         </label>
                     </form>
                     <div class="popap-btn">
